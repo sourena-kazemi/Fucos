@@ -5,8 +5,23 @@ import (
 )
 
 func main() {
-        fs := http.FileServer(http.Dir("./dist"))
-        http.Handle("/", fs)
-        http.Handle("/test", http.StripPrefix("/test", fs))
+        // ignorePaths := [...]string{
+        //         "/",
+        //         "/assets/index-07ef3f25.js",
+        //         "/assets/index-959dcb22.css",
+        //         "/vite.svg",
+        // }
+        // fileServer := http.FileServer(http.Dir("./dist"))
+        staticFiles := http.FileServer(http.Dir("./dist/assets"))
+        http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+                // for _,path := range ignorePaths{
+                //         if (r.URL.Path == path){
+                //                 fileServer.ServeHTTP(w,r)
+                //                 return
+                //         }
+                // }
+                http.ServeFile(w, r, "./dist/index.html")
+        })
+        http.Handle("/assets/",http.StripPrefix("/assets/",staticFiles))
         http.ListenAndServe("localhost:3000", nil)
 }

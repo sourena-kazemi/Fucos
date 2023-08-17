@@ -1,4 +1,9 @@
+import { Link } from "react-router-dom"
 function LandingPage() {
-  return <p className="text-3xl text-emerald-600">Hello From Landing Page</p>
+  return (
+    <Link className="text-3xl text-emerald-600" to="/test">
+      Hello From Landing Page
+    </Link>
+  )
 }
 export default LandingPage
