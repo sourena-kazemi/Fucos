@@ -1,16 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Navbar from "./components/Navbar"
 import LandingPage from "./pages/LandingPage"
-import TestPage from "./pages/TestPage"
-import Error from "./pages/Error"
-import "./App.css"
+import ErrorPage from "./pages/ErrorPage"
 
 function App() {
   return (
     <BrowserRouter>
+      <Navbar isUserLoggedIn={false} />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>
   )
