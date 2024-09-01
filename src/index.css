@@ -7,3 +7,12 @@
   color: #c3f0d8;
   background-color: #1d2025;
 }
+html,
+body,
+#root,
+#verticalCentered {
+  height: 100%;
+}
+html {
+  overflow-y: hidden;
+}
